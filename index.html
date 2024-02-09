@@ -18,13 +18,22 @@
         <!-- myapp -->
         <div class="myapp">
             <div class="sensor">
-                <h2>Set Timer (s)</h2>
+                <div class="data-sensor">
+                    <h2>Set Timer (s)</h2>
+                    <div class="toggle-container-2">
+                        <p id="textMode">Static</p>
+                        <label class="switch-2">
+                            <input type="checkbox" id="toggleMode">
+                            <span class="slider-2"></span>
+                        </label>
+                    </div>
+                </div>
                 <div class="data-sensor">
                     <h3>Timer ON</h3>
                     <div>
                         <input type="number" id="timer_on" class="col-data" value="0">
                         <button id="set_on" type="button" class="btn-upload"
-                            onclick="btnSetup('timer_on', 'ADRSWM/PD/ADD_TIMER_ON')">
+                            onclick="btnSetup('timer_on', 'ADRSWM/PD/ADD_TIMER_ON', 'set_on')">
                             <i class='bx bxs-chevron-right'></i> Set
                             ON</button>
                     </div>
@@ -34,7 +43,7 @@
                     <div>
                         <input type="number" id="timer_off" class="col-data" value="0">
                         <button id="set_off" type="button" class="btn-upload"
-                            onclick="btnSetup('timer_off', 'ADRSWM/PD/ADD_TIMER_OFF')">
+                            onclick="btnSetup('timer_off', 'ADRSWM/PD/ADD_TIMER_OFF', 'set_off')">
                             <i class='bx bxs-chevron-right'></i> Set
                             OFF</button>
                     </div>

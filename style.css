@@ -255,6 +255,12 @@ input:checked+.slider:before {
     font-weight: 600;
 }
 
+#textMode {
+    margin-right: 10px;
+    color: #666;
+    font-weight: 600;
+}
+
 .switch-2 {
     position: relative;
     display: inline-block;

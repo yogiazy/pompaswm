@@ -84,6 +84,8 @@ setTimeout(function () {
 
 const toggleSwitch = document.getElementById('toggleSwitch');
 const toggleText = document.getElementById('toggleText');
+const toggleMode = document.getElementById('toggleMode');
+const textMode = document.getElementById('textMode');
 const pumpON = document.getElementById('pump_on');
 const pumpOFF = document.getElementById('pump_off');
 
@@ -106,6 +108,22 @@ toggleSwitch.addEventListener('change', function () {
         pump_on();
     } else {
         pump_off();
+    }
+});
+
+toggleMode.addEventListener('change', function () {
+    if (this.checked) {
+        textMode.textContent = "Random";
+        message = new Paho.MQTT.Message("1");
+        message.destinationName = "ADRSWM/PD/BTN_INTERVAL";
+        client.send(message);
+        setInterval(function() {
+            message = new Paho.MQTT.Message("1");
+            message.destinationName = "ADRSWM/PD/BTN_INTERVAL";
+            client.send(message);
+        }, 1000*60);
+    } else {
+        textMode.textContent = "Static"
     }
 });
 
@@ -133,16 +151,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-let flagSet = true;
-function btnSetup(id, topic) {
-    flagSet = false;
-    let value = document.getElementById(id).value;
-    message = new Paho.MQTT.Message(value);
+function btnSetup(id, topic, set) {
+    const b = document.getElementById(id);
+    const s = document.getElementById(set);
+    const i = s.innerHTML;
+    s.innerHTML = `<i class='bx bxs-chevron-right'></i> Setting..`;
+    message = new Paho.MQTT.Message(b.value);
     message.destinationName = topic;
     client.send(message);
-    setTimeout(function () {
-        flagSet = true;
-    }, 200);
+    setTimeout(function() {
+        s.innerHTML = i;
+    }, 1000);
 }
 
 const b = document.getElementById("btn_start");
