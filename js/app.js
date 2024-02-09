@@ -145,11 +145,11 @@ function btnSetup(id, topic) {
     }, 200);
 }
 
+const b = document.getElementById("btn_start");
+const b2 = document.getElementById("btn_stop");
 function btnStart() {
     pump_on();
     toggleSwitch.checked = true;
-    const b = document.getElementById("btn_start");
-    const b2 = document.getElementById("btn_stop");
     b.classList.add("hidden");
     b2.classList.remove("hidden");
     message = new Paho.MQTT.Message("true");
@@ -160,10 +160,8 @@ function btnStart() {
 function btnStop() {
     pump_off();
     toggleSwitch.checked = false;
-    const b = document.getElementById("btn_stop");
-    const b2 = document.getElementById("btn_start");
-    b.classList.add("hidden");
-    b2.classList.remove("hidden");
+    b2.classList.add("hidden");
+    b.classList.remove("hidden");
     message = new Paho.MQTT.Message("false");
     message.destinationName = "ADRSWM/PD/BTN_STOP";
     client.send(message);
@@ -175,6 +173,11 @@ function cekON() {
         if (flagCek === false) {
             alert("Gagal mengaktifkan pompa! cek kembali konfigurasi pompa.");
             toggleSwitch.checked = false;
+            b2.classList.add("hidden");
+            b.classList.remove("hidden");
+            message = new Paho.MQTT.Message("false");
+            message.destinationName = "ADRSWM/PD/BTN_STOP";
+            client.send(message);
         }
     }, 2000);
 }
@@ -184,6 +187,8 @@ function cekOFF() {
         if (flagCek === true) {
             alert("Gagal menonaktifkan pompa! cek kembali konfigurasi pompa.");
             toggleSwitch.checked = true;
+            b.classList.add("hidden");
+            b2.classList.remove("hidden");
         }
     }, 2000);
 }
