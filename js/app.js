@@ -39,18 +39,8 @@ function onMessageArrived(message) {
         currentOFF.value = data.current_off;
     } else if (data.timer_on === "on") {
         currentTimerOFF.value = data.timer_off;
-        if (data.timer_off === 1) {
-            setTimeout(function() {
-                currentTimerOFF.value = 0;
-            }, 1000);
-        }
     } else if (data.timer_off === "on") {
         currentTimerON.value = data.timer_on;
-        if (data.timer_on === 1) {
-            setTimeout(function() {
-                currentTimerON.value = 0;
-            }, 1000);
-        }
     }
 }
 
@@ -136,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let flagSet = true;
 function btnSetup(id, topic) {
     flagSet = false;
-    const value = document.getElementById(id).value;
+    let value = document.getElementById(id).value;
     message = new Paho.MQTT.Message(value);
     message.destinationName = topic;
     client.send(message);
