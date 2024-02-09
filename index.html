@@ -23,7 +23,9 @@
                     <h3>Timer ON</h3>
                     <div>
                         <input type="number" id="timer_on" class="col-data" value="0">
-                        <button id="set_on" type="button" class="btn-upload"><i class='bx bxs-chevron-right'></i> Set
+                        <button id="set_on" type="button" class="btn-upload"
+                            onclick="btnSetup('timer_on', 'ADRSWM/PD/ADD_TIMER_ON')">
+                            <i class='bx bxs-chevron-right'></i> Set
                             ON</button>
                     </div>
                 </div>
@@ -31,7 +33,9 @@
                     <h3>Timer OFF</h3>
                     <div>
                         <input type="number" id="timer_off" class="col-data" value="0">
-                        <button id="set_off" type="button" class="btn-upload"><i class='bx bxs-chevron-right'></i> Set
+                        <button id="set_off" type="button" class="btn-upload"
+                            onclick="btnSetup('timer_off', 'ADRSWM/PD/ADD_TIMER_OFF')">
+                            <i class='bx bxs-chevron-right'></i> Set
                             OFF</button>
                     </div>
                 </div>
@@ -43,7 +47,12 @@
             <div class="sensor">
                 <div class="data-sensor">
                     <h2>Pump Control & Monitor</h2>
-                    <button id="btn_start" type="button" class="btn-start"><i class="bx bxs-zap"></i> Start</button>
+                    <button id="btn_start" type="button" class="btn-start" onclick="btnStart()">
+                        <i class="bx bxs-zap"></i> Start
+                    </button>
+                    <button id="btn_stop" type="button" class="btn-stop hidden" onclick="btnStop()">
+                        <i class="bx bx-stop-circle"></i> Stop
+                    </button>
                 </div>
                 <div class="data-pump">
                     <div>
