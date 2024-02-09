@@ -41,6 +41,18 @@ function onMessageArrived(message) {
         currentTimerOFF.value = data.timer_off;
     } else if (data.timer_off === "on") {
         currentTimerON.value = data.timer_on;
+    } else if (data.timer_on === "azy") {
+        if (data.status === "ON") {
+            toggleText.textContent = 'ON';
+            pumpOFF.style.display = 'none';
+            pumpON.style.display = 'inline-block';
+            toggleSwitch.checked = true;
+        } else if (data.status === "OFF") {
+            toggleText.textContent = 'OFF';
+            pumpON.style.display = 'none';
+            pumpOFF.style.display = 'inline-block';
+            toggleSwitch.checked = false;
+        }
     }
 }
 
@@ -74,18 +86,12 @@ const pumpON = document.getElementById('pump_on');
 const pumpOFF = document.getElementById('pump_off');
 
 function pump_on() {
-    toggleText.textContent = 'ON';
-    pumpOFF.style.display = 'none';
-    pumpON.style.display = 'inline-block';
     message = new Paho.MQTT.Message("1");
     message.destinationName = "ADRSWM/PD/BTN_ON_OFF";
     client.send(message);
 }
 
 function pump_off() {
-    toggleText.textContent = 'OFF';
-    pumpON.style.display = 'none';
-    pumpOFF.style.display = 'inline-block';
     message = new Paho.MQTT.Message("0");
     message.destinationName = "ADRSWM/PD/BTN_ON_OFF";
     client.send(message);
