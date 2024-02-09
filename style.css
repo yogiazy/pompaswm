@@ -189,6 +189,13 @@ input[type="number"]::-webkit-outer-spin-button {
     color: rgb(71, 71, 60);
     align-items: center;
     padding-bottom: 0;
+    padding-top: 2px;
+}
+
+.data-setup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .toggle-container {
