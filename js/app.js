@@ -47,11 +47,13 @@ function onMessageArrived(message) {
             pumpOFF.style.display = 'none';
             pumpON.style.display = 'inline-block';
             toggleSwitch.checked = true;
+            flagCek = true;
         } else if (data.status === "OFF") {
             toggleText.textContent = 'OFF';
             pumpON.style.display = 'none';
             pumpOFF.style.display = 'inline-block';
             toggleSwitch.checked = false;
+            flagCek = false;
         }
     }
 }
@@ -89,12 +91,14 @@ function pump_on() {
     message = new Paho.MQTT.Message("1");
     message.destinationName = "ADRSWM/PD/BTN_ON_OFF";
     client.send(message);
+    cekON();
 }
 
 function pump_off() {
     message = new Paho.MQTT.Message("0");
     message.destinationName = "ADRSWM/PD/BTN_ON_OFF";
     client.send(message);
+    cekOFF();
 }
 
 toggleSwitch.addEventListener('change', function () {
@@ -163,4 +167,23 @@ function btnStop() {
     message = new Paho.MQTT.Message("false");
     message.destinationName = "ADRSWM/PD/BTN_STOP";
     client.send(message);
+}
+
+let flagCek = false;
+function cekON() {
+    setTimeout(function() {
+        if (flagCek === false) {
+            alert("Gagal mengaktifkan pompa! cek kembali konfigurasi pompa.");
+            toggleSwitch.checked = false;
+        }
+    }, 2000);
+}
+
+function cekOFF() {
+    setTimeout(function() {
+        if (flagCek === true) {
+            alert("Gagal menonaktifkan pompa! cek kembali konfigurasi pompa.");
+            toggleSwitch.checked = true;
+        }
+    }, 2000);
 }
