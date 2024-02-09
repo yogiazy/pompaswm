@@ -110,7 +110,27 @@ span {
     }
 
     .data-pump {
-        margin-inline: 0;
+        margin-inline: 0 !important;
+    }
+
+    .col-data {
+        width: 70px !important;
+    }
+
+    .col-data-on {
+        width: 70px !important;
+    }
+
+    .col-data-off {
+        width: 70px !important;
+    }
+
+    .label-control-on {
+        width: 120px !important;
+    }
+
+    .label-control-off {
+        width: 120px !important;
     }
 }
 
@@ -149,6 +169,12 @@ span {
 
 .data-sensor input {
     outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .col-data {
@@ -404,4 +430,16 @@ footer span {
     font-weight: 600;
     color: rgb(71, 71, 60);
     padding-bottom: 0;
+}
+
+.menu-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background-color: rgb(219, 219, 219);
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 20px 0px 0px 20px;
+    cursor: pointer;
 }
