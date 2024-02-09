@@ -21,7 +21,7 @@ function onConnect() {
 function onConnectionLost(responseObject) {
     if (responseObject.errorCode !== 0) {
         console.log("onConnectionLost:" + responseObject.errorMessage);
-        // location.reload();
+        location.reload();
     }
 }
 
@@ -32,7 +32,7 @@ const currentTimerOFF = document.getElementById("leftOFF");
 function onMessageArrived(message) {
     // console.log("onMessageArrived:" + message.payloadString);
     let data = JSON.parse(message.payloadString);
-    // console.log(data);
+    console.log(data);
 
     if (data.timer_off === "on" && data.timer_on === "on") {
         currentON.value = data.current_on;
