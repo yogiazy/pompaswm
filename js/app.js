@@ -49,8 +49,8 @@ function onMessageArrived(message) {
             toggleSwitch.checked = true;
             flagCek = true;
             if (start) {
-                b2.classList.add("hidden");
-                b.classList.remove("hidden");
+                b.classList.add("hidden");
+                b2.classList.remove("hidden");
             };
         } else if (data.status === "OFF") {
             toggleText.textContent = 'OFF';
