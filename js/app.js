@@ -48,7 +48,10 @@ function onMessageArrived(message) {
             pumpON.style.display = 'inline-block';
             toggleSwitch.checked = true;
             flagCek = true;
-
+            if (start) {
+                b2.classList.add("hidden");
+                b.classList.remove("hidden");
+            };
         } else if (data.status === "OFF") {
             toggleText.textContent = 'OFF';
             pumpON.style.display = 'none';
@@ -73,10 +76,6 @@ setTimeout(function () {
             manualText.style.color = '#666';
             toggleSwitch.disabled = true;
             btnStart.disabled = false;
-            if(start) {
-                b2.classList.add("hidden");
-                b.classList.remove("hidden");
-            };
         } else {
             control = false;
             manualText.style.color = '#0bc2b9';
@@ -123,7 +122,7 @@ toggleMode.addEventListener('change', function () {
         message = new Paho.MQTT.Message("1");
         message.destinationName = "ADRSWM/PD/BTN_INTERVAL";
         client.send(message);
-        myInv = setInterval(function() {
+        myInv = setInterval(function () {
             message = new Paho.MQTT.Message("1");
             message.destinationName = "ADRSWM/PD/BTN_INTERVAL";
             client.send(message);
@@ -168,10 +167,10 @@ function btnSetup(id, topic, set) {
     message = new Paho.MQTT.Message(b.value);
     message.destinationName = topic;
     client.send(message);
-    setTimeout(function() {
+    setTimeout(function () {
         s.innerHTML = `<i class='bx bx-check-double'></i> Done`;
     }, 1500);
-    setTimeout(function() {
+    setTimeout(function () {
         s.innerHTML = i;
     }, 2500);
 }
@@ -203,7 +202,7 @@ function btnStop() {
 
 let flagCek = false;
 function cekON() {
-    setTimeout(function() {
+    setTimeout(function () {
         if (flagCek === false) {
             alert("Gagal mengaktifkan pompa! cek kembali konfigurasi pompa.");
             toggleSwitch.checked = false;
@@ -217,7 +216,7 @@ function cekON() {
 }
 
 function cekOFF() {
-    setTimeout(function() {
+    setTimeout(function () {
         if (flagCek === true) {
             alert("Gagal menonaktifkan pompa! cek kembali konfigurasi pompa.");
             toggleSwitch.checked = true;
