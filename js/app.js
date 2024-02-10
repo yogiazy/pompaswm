@@ -32,7 +32,7 @@ const currentTimerOFF = document.getElementById("leftOFF");
 function onMessageArrived(message) {
     // console.log("onMessageArrived:" + message.payloadString);
     let data = JSON.parse(message.payloadString);
-    console.log(data);
+    // console.log(data);
 
     if (data.timer_off === "on" && data.timer_on === "on") {
         currentON.value = data.current_on;
