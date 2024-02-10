@@ -156,11 +156,15 @@ async function addComponent(id, comp) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 990) {
         addComponent("myNav", "navMobile");
     } else {
         addComponent("myNav", "navDekstop");
     }
+});
+
+window.addEventListener("resize", function () {
+    location.reload();
 });
 
 function btnSetup(id, topic, set) {

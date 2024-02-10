@@ -60,12 +60,12 @@ span {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 15px;
+    bottom: 35px;
     left: 50%;
-    transform: translate(-50%);
+    transform: translate(-60%);
 }
 
-@media (max-width: 728px) {
+@media (max-width: 990px) {
     .myheader {
         display: flex;
         justify-content: space-between;
@@ -483,4 +483,28 @@ footer span {
 
 .hidden {
     display: none !important;
+}
+
+.penjelasan {
+    padding: 20px;
+    margin-left: 10px;
+}
+
+.exp {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.list-exp {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    margin-block: -10px;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
