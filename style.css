@@ -60,9 +60,9 @@ span {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 35px;
+    bottom: 2vh;
     left: 50%;
-    transform: translate(-60%);
+    transform: translate(-52%);
 }
 
 @media (max-width: 990px) {
