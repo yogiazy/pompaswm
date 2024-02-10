@@ -48,6 +48,7 @@ function onMessageArrived(message) {
             pumpON.style.display = 'inline-block';
             toggleSwitch.checked = true;
             flagCek = true;
+
         } else if (data.status === "OFF") {
             toggleText.textContent = 'OFF';
             pumpON.style.display = 'none';
@@ -58,12 +59,12 @@ function onMessageArrived(message) {
     }
 }
 
+let control = true;
 setTimeout(function () {
     const toggleAuto = document.getElementById('toggleAuto');
     const autoText = document.getElementById('autoText');
     const manualText = document.getElementById('manualText');
     const btnStart = document.getElementById('btn_start');
-    let control = true;
 
     toggleAuto.addEventListener('change', function () {
         if (this.checked) {
@@ -72,6 +73,10 @@ setTimeout(function () {
             manualText.style.color = '#666';
             toggleSwitch.disabled = true;
             btnStart.disabled = false;
+            if(start) {
+                b2.classList.add("hidden");
+                b.classList.remove("hidden");
+            };
         } else {
             control = false;
             manualText.style.color = '#0bc2b9';
@@ -173,8 +178,10 @@ function btnSetup(id, topic, set) {
 
 const b = document.getElementById("btn_start");
 const b2 = document.getElementById("btn_stop");
+let start = false;
 function btnStart() {
     pump_on();
+    start = true;
     toggleSwitch.checked = true;
     b.classList.add("hidden");
     b2.classList.remove("hidden");
@@ -185,6 +192,7 @@ function btnStart() {
 
 function btnStop() {
     pump_off();
+    start = false;
     toggleSwitch.checked = false;
     b2.classList.add("hidden");
     b.classList.remove("hidden");
