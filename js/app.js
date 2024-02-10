@@ -38,6 +38,10 @@ function onMessageArrived(message) {
         currentON.value = data.current_on;
         currentOFF.value = data.current_off;
         start = data.start;
+        if (start) {
+            b.classList.add("hidden");
+            b2.classList.remove("hidden");
+        };
     } else if (data.timer_on === "on") {
         currentTimerOFF.value = data.timer_off;
     } else if (data.timer_off === "on") {
@@ -49,10 +53,6 @@ function onMessageArrived(message) {
             pumpON.style.display = 'inline-block';
             toggleSwitch.checked = true;
             flagCek = true;
-            if (start) {
-                b.classList.add("hidden");
-                b2.classList.remove("hidden");
-            };
         } else if (data.status === "OFF") {
             toggleText.textContent = 'OFF';
             pumpON.style.display = 'none';
