@@ -59,6 +59,10 @@ function onMessageArrived(message) {
             pumpOFF.style.display = 'inline-block';
             toggleSwitch.checked = false;
             flagCek = false;
+            if (!start) {
+                b2.classList.add("hidden");
+                b.classList.remove("hidden");
+            };
         }
     }
 }
