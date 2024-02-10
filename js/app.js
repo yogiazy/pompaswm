@@ -111,19 +111,23 @@ toggleSwitch.addEventListener('change', function () {
     }
 });
 
+let myInv;
 toggleMode.addEventListener('change', function () {
     if (this.checked) {
         textMode.textContent = "Random";
         message = new Paho.MQTT.Message("1");
         message.destinationName = "ADRSWM/PD/BTN_INTERVAL";
         client.send(message);
-        setInterval(function() {
+        myInv = setInterval(function() {
             message = new Paho.MQTT.Message("1");
             message.destinationName = "ADRSWM/PD/BTN_INTERVAL";
             client.send(message);
-        }, 1000*60);
+        }, 2000);
     } else {
         textMode.textContent = "Static"
+        if (myInv) {
+            clearInterval(myInv);
+        }
     }
 });
 
@@ -155,13 +159,16 @@ function btnSetup(id, topic, set) {
     const b = document.getElementById(id);
     const s = document.getElementById(set);
     const i = s.innerHTML;
-    s.innerHTML = `<i class='bx bxs-chevron-right'></i> Setting..`;
+    s.innerHTML = `<i class='bx bx-log-in-circle bx-tada'></i> Setting..`;
     message = new Paho.MQTT.Message(b.value);
     message.destinationName = topic;
     client.send(message);
     setTimeout(function() {
+        s.innerHTML = `<i class='bx bx-check-double'></i> Done`;
+    }, 1500);
+    setTimeout(function() {
         s.innerHTML = i;
-    }, 1000);
+    }, 2500);
 }
 
 const b = document.getElementById("btn_start");
