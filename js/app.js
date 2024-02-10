@@ -59,10 +59,9 @@ function onMessageArrived(message) {
             pumpOFF.style.display = 'inline-block';
             toggleSwitch.checked = false;
             flagCek = false;
-            if (start !== true) {
-                b2.classList.add("hidden");
-                b.classList.remove("hidden");
-            };
+            message = new Paho.MQTT.Message("CEK_TIMER");
+            message.destinationName = "ADRSWM/PD/CEK_TIMER";
+            client.send(message);
         }
     }
 }
