@@ -62,9 +62,6 @@ function onMessageArrived(message) {
             pumpOFF.style.display = 'inline-block';
             toggleSwitch.checked = false;
             flagCek = false;
-            message = new Paho.MQTT.Message("CEK_TIMER");
-            message.destinationName = "ADRSWM/PD/CEK_TIMER";
-            client.send(message);
         }
     }
 }
@@ -194,6 +191,11 @@ function btnStart() {
     message = new Paho.MQTT.Message("true");
     message.destinationName = "ADRSWM/PD/BTN_START";
     client.send(message);
+    setTimeout(function() {
+        message = new Paho.MQTT.Message("CEK_TIMER");
+        message.destinationName = "ADRSWM/PD/CEK_TIMER";
+        client.send(message);
+    }, 10);
 }
 
 function btnStop() {
@@ -205,6 +207,11 @@ function btnStop() {
     message = new Paho.MQTT.Message("false");
     message.destinationName = "ADRSWM/PD/BTN_STOP";
     client.send(message);
+    setTimeout(function() {
+        message = new Paho.MQTT.Message("CEK_TIMER");
+        message.destinationName = "ADRSWM/PD/CEK_TIMER";
+        client.send(message);
+    }, 10);
 }
 
 let flagCek = false;
