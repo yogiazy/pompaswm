@@ -37,6 +37,7 @@ function onMessageArrived(message) {
     if (data.timer_off === "on" && data.timer_on === "on") {
         currentON.value = data.current_on;
         currentOFF.value = data.current_off;
+        start = data.start;
     } else if (data.timer_on === "on") {
         currentTimerOFF.value = data.timer_off;
     } else if (data.timer_off === "on") {
@@ -177,7 +178,7 @@ function btnSetup(id, topic, set) {
 
 const b = document.getElementById("btn_start");
 const b2 = document.getElementById("btn_stop");
-let start = false;
+let start;
 function btnStart() {
     pump_on();
     start = true;
