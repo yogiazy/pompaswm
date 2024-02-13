@@ -47,8 +47,10 @@ function onMessageArrived(message) {
         }
     } else if (data.timer_on === "on") {
         currentTimerOFF.value = data.timer_off;
+        styleOFF();
     } else if (data.timer_off === "on") {
         currentTimerON.value = data.timer_on;
+        styleON();
     } else if (data.timer_on === "azy") {
         if (data.status === "ON") {
             styleON();
