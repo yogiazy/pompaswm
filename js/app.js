@@ -41,11 +41,9 @@ function onMessageArrived(message) {
         if (start) {
             b.classList.add("hidden");
             b2.classList.remove("hidden");
-            styleON();
         } else {
             b2.classList.add("hidden");
             b.classList.remove("hidden");
-            styleOFF();
         }
     } else if (data.timer_on === "on") {
         currentTimerOFF.value = data.timer_off;
