@@ -54,7 +54,7 @@ function onMessageArrived(message) {
         }
     } else if (data.timer_off === "on") {
         currentTimerON.value = data.timer_on;
-        if (data.timer_off < localStorage.getItem("currentON")-1) {
+        if (data.timer_on < localStorage.getItem("currentON")-1) {
             styleON();
         }
     } else if (data.timer_on === "azy") {
