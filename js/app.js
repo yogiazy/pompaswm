@@ -49,12 +49,12 @@ function onMessageArrived(message) {
         }
     } else if (data.timer_on === "on") {
         currentTimerOFF.value = data.timer_off;
-        if (data.timer_off === localStorage.getItem("currentOFF")) {
+        if (data.timer_off !== localStorage.getItem("currentOFF")) {
             styleOFF();
         }
     } else if (data.timer_off === "on") {
         currentTimerON.value = data.timer_on;
-        if (data.timer_off === localStorage.getItem("currentON")) {
+        if (data.timer_off !== localStorage.getItem("currentON")) {
             styleON();
         }
     } else if (data.timer_on === "azy") {
