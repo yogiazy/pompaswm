@@ -41,9 +41,11 @@ function onMessageArrived(message) {
         if (start) {
             b.classList.add("hidden");
             b2.classList.remove("hidden");
+            toggleSwitch.checked = true;
         } else {
             b2.classList.add("hidden");
             b.classList.remove("hidden");
+            toggleSwitch.checked = false;
         }
     } else if (data.timer_on === "on") {
         currentTimerOFF.value = data.timer_off;
