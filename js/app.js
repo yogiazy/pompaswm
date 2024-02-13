@@ -132,7 +132,7 @@ toggleMode.addEventListener('change', function () {
             message = new Paho.MQTT.Message("1");
             message.destinationName = "ADRSWM/PD/BTN_INTERVAL";
             client.send(message);
-        }, 2000);
+        }, 1000*60);
     } else {
         textMode.textContent = "Static"
         if (myInv) {
