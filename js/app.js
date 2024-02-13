@@ -163,10 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-window.addEventListener("resize", function () {
-    location.reload();
-});
-
 function btnSetup(id, topic, set) {
     const b = document.getElementById(id);
     const s = document.getElementById(set);
