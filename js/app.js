@@ -41,11 +41,11 @@ function onMessageArrived(message) {
         if (start) {
             b.classList.add("hidden");
             b2.classList.remove("hidden");
-            toggleSwitch.checked = true;
+            styleON();
         } else {
             b2.classList.add("hidden");
             b.classList.remove("hidden");
-            toggleSwitch.checked = false;
+            styleOFF();
         }
     } else if (data.timer_on === "on") {
         currentTimerOFF.value = data.timer_off;
@@ -53,19 +53,27 @@ function onMessageArrived(message) {
         currentTimerON.value = data.timer_on;
     } else if (data.timer_on === "azy") {
         if (data.status === "ON") {
-            toggleText.textContent = 'ON';
-            pumpOFF.style.display = 'none';
-            pumpON.style.display = 'inline-block';
-            toggleSwitch.checked = true;
+            styleON();
             flagCek = true;
         } else if (data.status === "OFF") {
-            toggleText.textContent = 'OFF';
-            pumpON.style.display = 'none';
-            pumpOFF.style.display = 'inline-block';
-            toggleSwitch.checked = false;
+            styleOFF();
             flagCek = false;
         }
     }
+}
+
+function styleON() {
+    toggleText.textContent = 'ON';
+    pumpOFF.style.display = 'none';
+    pumpON.style.display = 'inline-block';
+    toggleSwitch.checked = true;
+}
+
+function styleOFF() {
+    toggleText.textContent = 'OFF';
+    pumpON.style.display = 'none';
+    pumpOFF.style.display = 'inline-block';
+    toggleSwitch.checked = false;
 }
 
 let control = true;
